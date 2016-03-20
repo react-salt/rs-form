@@ -22,7 +22,8 @@ export default class FormControl extends Component {
     }
 
     onChange(value) {
-        this.props.onChange(this.props.name, value);
+        let validate = this.props.validate ? this.props.validate(value) : true;
+        this.props.onChange(this.props.name, value, validate);
     }
 
     render() {

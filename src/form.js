@@ -25,24 +25,41 @@ class Form extends Component {
     }
 
     state = {
-        formData: this.props.formData
+        formData: this.props.formData,
+        formValidate: {}
     }
 
     // 生命周期更新
     componentWillReceiveProps(nextProps) {
         this.setState({
-            formData: nextProps.formData
+            formData: nextProps.formData,
+            formValidate: {}
         });
     }
 
     // 内部更新
-    handleChange(name, value) {
-        let { formData } = this.state;
+    handleChange(name, value, validate) {
+        let { formData, formValidate } = this.state;
         formData[name] = value;
+        formValidate[name] = validate;
         this.setState({
             formData: formData
         });
         this.props.onChange && this.props.onChange(name, value);
+    }
+
+    // 验证规则
+    onValidate() {
+        let result = [];
+        let { formValidate } = this.state;
+
+        for (let name of Object.keys(formValidate)) {
+            if (typeof formValidate[name] !== 'boolean' || !formValidate[name]) {
+                result.push({...formValidate[name], name: name});
+            }
+        }
+
+        return result.length === 0 ? true : result;
     }
 
     // 获取数据
@@ -59,6 +76,7 @@ class Form extends Component {
     // 提交
     onSubmit(e) {
         e.preventDefault();
+        console.log(this.onValidate());
         this.props.onSubmit(this.getData());
     }
 
