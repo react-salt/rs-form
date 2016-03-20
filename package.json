@@ -1,0 +1,35 @@
+{
+  "name": "rs-form",
+  "version": "0.0.1",
+  "description": "react from",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node node_modules/.bin/rs-server",
+    "pre-publish": "node node_modules/.bin/pre-publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/react-salt/rs-form.git"
+  },
+  "author": "yanweiqing",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/react-salt/rs-form/issues"
+  },
+  "files": [
+    "assets/",
+    "dist/",
+    "examples/",
+    "src/"
+  ],
+  "homepage": "https://github.com/react-salt/rs-form#readme",
+  "devDependencies": {
+    "react-dom": "^0.14.7",
+    "rs-server": "^0.1.2",
+    "rs-ui-core": "^0.1.0"
+  },
+  "dependencies": {
+    "react": "^0.14.7",
+    "rs-util": "^0.1.0"
+  }
+}
