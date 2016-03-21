@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
+import { Text, Radio, Checkbox, Textarea } from 'rs-input';
+import Select from 'rs-select';
 
 import Form from '../src/form.js';
 import FormControl from '../src/form-control.js';
-import Input from '../src/input.js';
-import Select from '../src/select.js';
-import Radio from '../src/radio.js';
-import Checkbox from '../src/checkbox.js';
 import Tips from '../src/tips.js';
 
 export default class Demo extends Component {
@@ -47,7 +45,7 @@ export default class Demo extends Component {
             >
                 <FormControl name="name" disabled required>
                     <label>名字</label>
-                    <Input password />
+                    <Text password />
                 </FormControl>
                 <FormControl name="type" show={(value) => value !== '2'} listen='name' className={(data)=>{}}>
                     <label>性别</label>
