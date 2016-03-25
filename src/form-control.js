@@ -8,12 +8,17 @@ export default class FormControl extends Component {
             React.PropTypes.func,
             React.PropTypes.bool
         ]),
+        disabled: React.PropTypes.oneOfType([
+            React.PropTypes.func,
+            React.PropTypes.bool
+        ]),
     }
 
     static defaultProps = {
         prefixName: 'salt',
         name: '',
         show: true,
+        disabled: false
     }
 
     constructor(props) {
@@ -22,15 +27,18 @@ export default class FormControl extends Component {
     }
 
     onChange(value) {
-        let validate = this.props.validate ? this.props.validate(value) : true;
+        let validate = (this.props.required && !value) ?
+                        {type: 'danger', content: '此项必填'} :
+                        this.props.validate ? this.props.validate(value) : true;
         this.props.onChange(this.props.name, value, validate);
     }
 
     render() {
         let self = this;
-        let { children, formData, name, prefixName, show } = this.props;
+        let { children, formData, name, prefixName, show, disabled } = this.props;
         let value = formData[name];
         let ifShow = typeof show === 'boolean' ? show : show(value);
+        let ifDisabled = typeof disabled === 'boolean' ? disabled : disabled(value);
 
         return (
             <div
@@ -42,7 +50,8 @@ export default class FormControl extends Component {
                         return React.cloneElement(child, {
                             onChange: self.onChange,
                             formData: formData,
-                            value: value
+                            value: value,
+                            disabled: ifDisabled
                         });
                     })
                 }

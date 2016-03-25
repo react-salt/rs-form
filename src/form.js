@@ -10,13 +10,15 @@ class Form extends Component {
            React.PropTypes.func,
            React.PropTypes.bool
         ]),
+        myStyle: React.PropTypes.string
     }
 
     static defaultProps = {
         prefixName: 'salt',
         formData: {},
         onSubmit: () => console.log('请定义onSubmit函数'),
-        onChange: false
+        onChange: false,
+        myStyle: ''
     }
 
     constructor(props) {
@@ -82,10 +84,10 @@ class Form extends Component {
 
     render() {
         let self = this;
-        let { children, prefixName, formData } = this.props;
+        let { children, prefixName, formData, myStyle } = this.props;
 
         return (
-            <form>
+            <form className={`form-${myStyle}`}>
                 {
                     React.Children.map(children, (child) => {
                         return React.cloneElement(child, {
