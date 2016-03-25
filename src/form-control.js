@@ -42,7 +42,7 @@ export default class FormControl extends Component {
 
         return (
             <div
-                className={`${prefixName}-from-group`}
+                className={`${prefixName}-form-group`}
                 style={{display: ifShow ? 'block' : 'none'}}
             >
                 {
