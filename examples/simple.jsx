@@ -6,8 +6,6 @@ import Form from '../src/form.js';
 import FormControl from '../src/form-control.js';
 import Tips from '../src/tips.js';
 
-import '../assets/index.less';
-
 export default class Demo extends Component {
     constructor(props) {
         super(props);
