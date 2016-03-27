@@ -53,7 +53,7 @@ export default class Demo extends Component {
                 grid={2}
             >
                 <FormControl name="name" required
-                    grid={[4, 8]}
+                    grid={[8, 16]}
                 >
                     <label className="control-label">名字</label>
                     <Text password />

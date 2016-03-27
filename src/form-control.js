@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 
+const STATUS = {
+    'success': 'ok',
+    'warning': 'warning-sign',
+    'error': 'remove'
+}
+
 export default class FormControl extends Component {
     static propTypes = {
         name: React.PropTypes.string,
@@ -42,12 +48,15 @@ export default class FormControl extends Component {
         
         let validate = formValidate[name]; // 本条的验证结果
 
-        let classNames = 'form-group hasfeedback ';
+        let classNames = 'form-group has-feedback ';
+        let checkStatus = false;
         if ((autoCheck || selfCheck) && (this.props.required || this.props.validate)) {
             if (validate === true) {
                 classNames += 'has-success';
+                checkStatus = STATUS['success'];
             } else if (typeof validate === 'object') {
                 classNames += 'has-' + validate.type;
+                checkStatus = STATUS[validate.type]
             }
         }
 
@@ -71,6 +80,9 @@ export default class FormControl extends Component {
                             </div>
                        )
                     })
+                }
+                {
+                    checkStatus && <i className={`glyphicon glyphicon-${checkStatus} form-control-feedback`} />
                 }
             </div>
         );
