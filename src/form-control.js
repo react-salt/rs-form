@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 export default class FormControl extends Component {
     static propTypes = {
-        prefixName: React.PropTypes.string,
         name: React.PropTypes.string,
         show: React.PropTypes.oneOfType([
             React.PropTypes.func,
@@ -12,13 +11,14 @@ export default class FormControl extends Component {
             React.PropTypes.func,
             React.PropTypes.bool
         ]),
+        grid: React.PropTypes.array
     }
 
     static defaultProps = {
-        prefixName: 'salt',
         name: '',
         show: true,
-        disabled: false
+        disabled: false,
+        grid: [4, 20]
     }
 
     constructor(props) {
@@ -28,31 +28,48 @@ export default class FormControl extends Component {
 
     onChange(value) {
         let validate = (this.props.required && !value) ?
-                        {type: 'danger', content: '此项必填'} :
+                        {type: 'error', content: '此项必填'} :
                         this.props.validate ? this.props.validate(value) : true;
         this.props.onChange(this.props.name, value, validate);
     }
 
     render() {
         let self = this;
-        let { children, formData, name, prefixName, show, disabled } = this.props;
+        let { children, formData, name, show, disabled, grid, autoCheck, selfCheck, formValidate } = this.props;
         let value = formData[name];
         let ifShow = typeof show === 'boolean' ? show : show(value);
         let ifDisabled = typeof disabled === 'boolean' ? disabled : disabled(value);
+        
+        let validate = formValidate[name]; // 本条的验证结果
+
+        let classNames = 'form-group hasfeedback ';
+        if ((autoCheck || selfCheck) && (this.props.required || this.props.validate)) {
+            if (validate === true) {
+                classNames += 'has-success';
+            } else if (typeof validate === 'object') {
+                classNames += 'has-' + validate.type;
+            }
+        }
 
         return (
             <div
-                className={`${prefixName}-form-group`}
+                className={classNames}
                 style={{display: ifShow ? 'block' : 'none'}}
             >
                 {
-                    React.Children.map(children, (child) => {
-                        return React.cloneElement(child, {
-                            onChange: self.onChange,
-                            formData: formData,
-                            value: value,
-                            disabled: ifDisabled
-                        });
+                    React.Children.map(children, (child, index) => {
+                        return (
+                            <div className={`col-sm-${grid[index] ? grid[index] : '24'}`}>
+                                {
+                                    React.cloneElement(child, {
+                                        onChange: self.onChange,
+                                        formData: formData,
+                                        value: value,
+                                        disabled: ifDisabled
+                                    })
+                                }
+                            </div>
+                       )
                     })
                 }
             </div>

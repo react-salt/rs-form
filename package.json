@@ -1,6 +1,6 @@
 {
   "name": "rs-form",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "react from",
   "main": "index.js",
   "scripts": {
@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "react": "^0.14.7",
-    "rs-input": "0.0.4",
-    "rs-select": "0.0.1",
+    "rs-input": "0.0.7",
+    "rs-select": "0.0.4",
     "rs-util": "^0.1.0"
   }
 }

@@ -1,5 +1,5 @@
-.@{prefixName}-checkbox-inline:hover .select-box,
-.@{prefixName}-radio-inline:hover .select-box {
+.checkbox-inline:hover .select-box,
+.radio-inline:hover .select-box {
     stroke: #DD403B;
 }
 @input-border: #cccccc;
@@ -117,7 +117,7 @@ output {
 // input[type="tel"]
 // input[type="color"]
 
-.@{prefixName}-form-control {
+.form-control {
     display: block;
     width: 100%;
     height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
@@ -186,17 +186,17 @@ input[type="search"] {
     input[type="time"],
     input[type="datetime-local"],
     input[type="month"] {
-        &.@{prefixName}-form-control {
+        &.form-control {
             line-height: @input-height-base;
         }
 
-        &.@{prefixName}-input-sm,
-        .@{prefixName}-input-group-sm & {
+        &.input-sm,
+        .input-group-sm & {
             line-height: @input-height-small;
         }
 
-        &.@{prefixName}-input-lg,
-        .@{prefixName}-input-group-lg & {
+        &.input-lg,
+        .input-group-lg & {
             line-height: @input-height-large;
         }
     }
@@ -207,7 +207,7 @@ input[type="search"] {
 // Designed to help with the organization and spacing of vertical forms. For
 // horizontal forms, use the predefined grid classes.
 
-.@{prefixName}-form-group {
+.form-group {
     margin-bottom: @form-group-margin-bottom;
 }
 
@@ -215,8 +215,8 @@ input[type="search"] {
 //
 // Indent the labels to position radios/checkboxes as hanging controls.
 
-.@{prefixName}-radio,
-.@{prefixName}-checkbox {
+.radio,
+.checkbox {
     position: relative;
     display: block;
     margin-top: 10px;
@@ -231,23 +231,23 @@ input[type="search"] {
     }
 }
 
-.@{prefixName}-radio input[type="radio"],
-.@{prefixName}-radio-inline input[type="radio"],
-.@{prefixName}-checkbox input[type="checkbox"],
-.@{prefixName}-checkbox-inline input[type="checkbox"] {
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
     position: absolute;
     margin-left: -20px;
     margin-top: 4px \9;
 }
 
-.@{prefixName}-radio + .@{prefixName}-radio,
-.@{prefixName}-checkbox + .@{prefixName}-checkbox {
+.radio + .radio,
+.checkbox + .checkbox {
     margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
 }
 
 // Radios and checkboxes on same line
-.@{prefixName}-radio-inline,
-.@{prefixName}-checkbox-inline {
+.radio-inline,
+.checkbox-inline {
     position: relative;
     display: inline-block;
     padding-left: 20px;
@@ -258,8 +258,8 @@ input[type="search"] {
     margin-right: 20px;
 }
 
-.@{prefixName}-radio-inline + .@{prefixName}-radio-inline,
-.@{prefixName}-checkbox-inline + .@{prefixName}-checkbox-inline {
+.radio-inline + .radio-inline,
+.checkbox-inline + .checkbox-inline {
     margin-top: 0;
     margin-left: 0; // space out consecutive inline controls
 }
@@ -278,8 +278,8 @@ input[type="checkbox"] {
 }
 
 // These classes are used directly on <label>s
-.@{prefixName}-radio-inline,
-.@{prefixName}-checkbox-inline {
+.radio-inline,
+.checkbox-inline {
     &.disabled,
     fieldset[disabled] & {
         cursor: @cursor-disabled;
@@ -287,8 +287,8 @@ input[type="checkbox"] {
 }
 
 // These classes are used on elements with <label> descendants
-.@{prefixName}-radio,
-.@{prefixName}-checkbox {
+.radio,
+.checkbox {
     &.disabled,
     fieldset[disabled] & {
         label {
@@ -302,7 +302,7 @@ input[type="checkbox"] {
 // Apply class to a `p` element to make any string of text align with labels in
 // a horizontal form layout.
 
-.@{prefixName}-form-control-static {
+.form-control-static {
     // Size it appropriately next to real form controls
     padding-top: (@padding-base-vertical + 1);
     padding-bottom: (@padding-base-vertical + 1);
@@ -310,8 +310,8 @@ input[type="checkbox"] {
     margin-bottom: 0;
     min-height: (@line-height-computed + @font-size-base);
 
-    &.@{prefixName}-input-lg,
-    &.@{prefixName}-input-sm {
+    &.input-lg,
+    &.input-sm {
         padding-left: 0;
         padding-right: 0;
     }
@@ -325,27 +325,27 @@ input[type="checkbox"] {
 // The `.form-group-* form-control` variations are sadly duplicated to avoid the
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
-.@{prefixName}-input-sm {
+.input-sm {
     .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
 }
 
-.@{prefixName}-form-group-sm {
-    .@{prefixName}-form-control {
+.form-group-sm {
+    .form-control {
         height: @input-height-small;
         padding: @padding-small-vertical @padding-small-horizontal;
         font-size: @font-size-small;
         line-height: @line-height-small;
         border-radius: @input-border-radius-small;
     }
-    select.@{prefixName}-form-control {
+    select.form-control {
         height: @input-height-small;
         line-height: @input-height-small;
     }
-    textarea.@{prefixName}-form-control,
-    select[multiple].@{prefixName}-form-control {
+    textarea.form-control,
+    select[multiple].form-control {
         height: auto;
     }
-    .@{prefixName}-form-control-static {
+    .form-control-static {
         height: @input-height-small;
         min-height: (@line-height-computed + @font-size-small);
         padding: (@padding-small-vertical + 1) @padding-small-horizontal;
@@ -354,27 +354,27 @@ input[type="checkbox"] {
     }
 }
 
-.@{prefixName}-input-lg {
+.input-lg {
     .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
 }
 
-.@{prefixName}-form-group-lg {
-    .@{prefixName}-form-control {
+.form-group-lg {
+    .form-control {
         height: @input-height-large;
         padding: @padding-large-vertical @padding-large-horizontal;
         font-size: @font-size-large;
         line-height: @line-height-large;
         border-radius: @input-border-radius-large;
     }
-    select.@{prefixName}-form-control {
+    select.form-control {
         height: @input-height-large;
         line-height: @input-height-large;
     }
-    textarea.@{prefixName}-form-control,
-    select[multiple].@{prefixName}-form-control {
+    textarea.form-control,
+    select[multiple].form-control {
         height: auto;
     }
-    .@{prefixName}-form-control-static {
+    .form-control-static {
         height: @input-height-large;
         min-height: (@line-height-computed + @font-size-large);
         padding: (@padding-large-vertical + 1) @padding-large-horizontal;
@@ -387,18 +387,18 @@ input[type="checkbox"] {
 //
 // Apply contextual and semantic states to individual form controls.
 
-.@{prefixName}-has-feedback {
+.has-feedback {
     // Enable absolute positioning
     position: relative;
 
     // Ensure icons don't overlap text
-    .@{prefixName}-form-control {
+    .form-control {
         padding-right: (@input-height-base * 1.25);
     }
 }
 
 // Feedback icon (requires .glyphicon classes)
-.@{prefixName}-form-control-feedback {
+.form-control-feedback {
     position: absolute;
     top: 0;
     right: 0;
@@ -411,42 +411,42 @@ input[type="checkbox"] {
     pointer-events: none;
 }
 
-.@{prefixName}-input-lg + .@{prefixName}-form-control-feedback,
-.@{prefixName}-input-group-lg + .@{prefixName}-form-control-feedback,
-.@{prefixName}-form-group-lg .@{prefixName}-form-control + .@{prefixName}-form-control-feedback {
+.input-lg + .form-control-feedback,
+.input-group-lg + .form-control-feedback,
+.form-group-lg .form-control + .form-control-feedback {
     width: @input-height-large;
     height: @input-height-large;
     line-height: @input-height-large;
 }
 
-.@{prefixName}-input-sm + .@{prefixName}-form-control-feedback,
-.@{prefixName}-input-group-sm + .@{prefixName}-form-control-feedback,
-.@{prefixName}-form-group-sm .@{prefixName}-form-control + .@{prefixName}-form-control-feedback {
+.input-sm + .form-control-feedback,
+.input-group-sm + .form-control-feedback,
+.form-group-sm .form-control + .form-control-feedback {
     width: @input-height-small;
     height: @input-height-small;
     line-height: @input-height-small;
 }
 
 // Feedback states
-.@{prefixName}-has-success {
+.has-success {
     .form-control-validation(@state-success-text; @state-success-text; @state-success-bg);
 }
 
-.@{prefixName}-has-warning {
+.has-warning {
     .form-control-validation(@state-warning-text; @state-warning-text; @state-warning-bg);
 }
 
-.@{prefixName}-has-error {
+.has-error {
     .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
 }
 
 // Reposition feedback icon if input has visible label above
-.@{prefixName}-has-feedback label {
+.has-feedback label {
 
-    & ~ .@{prefixName}-form-control-feedback {
+    & ~ .form-control-feedback {
         top: (@line-height-computed + 5); // Height of the `label` and its margin
     }
-    &.@{prefixName}-sr-only ~ .@{prefixName}-form-control-feedback {
+    &.sr-only ~ .form-control-feedback {
         top: 0;
     }
 }
@@ -456,7 +456,7 @@ input[type="checkbox"] {
 // Apply to any element you wish to create light text for placement immediately
 // below a form control. Use for general help, formatting, or instructional text.
 
-.@{prefixName}-help-block {
+.help-block {
     display: block; // account for any element using help-block
     font-size: 12px;
     margin-top: 2px;
@@ -475,30 +475,30 @@ input[type="checkbox"] {
 //
 // Heads up! This is mixin-ed into `.navbar-form` in navbars.less.
 
-.@{prefixName}-form-inline {
+.form-inline {
 
     // Kick in the inline
     @media (min-width: @screen-sm-min) {
         // Inline-block all the things for "inline"
-        .@{prefixName}-form-group {
+        .form-group {
             display: inline-block;
             margin: 0 10px;
             vertical-align: middle;
         }
 
         // In navbar-form, allow folks to *not* use `.form-group`
-        .@{prefixName}-form-control {
+        .form-control {
             display: inline-block;
             width: auto; // Prevent labels from stacking above inputs in `.form-group`
             vertical-align: middle;
         }
 
         // Make static controls behave like regular ones
-        .@{prefixName}-form-control-static {
+        .form-control-static {
             display: inline-block;
         }
 
-        .@{prefixName}-input-group {
+        .input-group {
             display: inline-table;
             vertical-align: middle;
 
@@ -510,19 +510,19 @@ input[type="checkbox"] {
         }
 
         // Input groups need that 100% width though
-        .@{prefixName}-input-group > .@{prefixName}-form-control {
+        .input-group > .form-control {
             width: 100%;
         }
 
-        .@{prefixName}-control-label {
+        .control-label {
             margin: 0 10px;
             vertical-align: middle;
         }
 
         // Remove default margin on radios/checkboxes that were used for stacking, and
         // then undo the floating of radios and checkboxes to match.
-        .@{prefixName}-radio,
-        .@{prefixName}-checkbox {
+        .radio,
+        .checkbox {
             display: inline-block;
             margin-top: 0;
             margin-bottom: 0;
@@ -533,14 +533,14 @@ input[type="checkbox"] {
             }
         }
 
-        .@{prefixName}-radio input[type="radio"],
-        .@{prefixName}-checkbox input[type="checkbox"] {
+        .radio input[type="radio"],
+        .checkbox input[type="checkbox"] {
             position: relative;
             margin-left: 0;
         }
 
         // Re-override the feedback icon.
-        .@{prefixName}-has-feedback .@{prefixName}-form-control-feedback {
+        .has-feedback .form-control-feedback {
             top: 0;
         }
     }
@@ -551,35 +551,35 @@ input[type="checkbox"] {
 // Horizontal forms are built on grid classes and allow you to create forms with
 // labels on the left and inputs on the right.
 
-.@{prefixName}-form-horizontal {
+.form-horizontal {
 
     // Consistent vertical alignment of radios and checkboxes
     //
     // Labels also get some reset styles, but that is scoped to a media query below.
-    .@{prefixName}-radio,
-    .@{prefixName}-checkbox,
-    .@{prefixName}-radio-inline,
-    .@{prefixName}-checkbox-inline {
+    .radio,
+    .checkbox,
+    .radio-inline,
+    .checkbox-inline {
         margin-top: 0;
         margin-bottom: 0;
         padding-top: (@padding-base-vertical + 1); // Default padding plus a border
     }
     // Account for padding we're adding to ensure the alignment and of help text
     // and other content below items
-    .@{prefixName}-radio,
-    .@{prefixName}-checkbox {
+    .radio,
+    .checkbox {
         min-height: (@line-height-computed + (@padding-base-vertical + 1));
     }
 
     // Make form groups behave like rows
-    .@{prefixName}-form-group {
+    .form-group {
         .make-row();
     }
 
     // Reset spacing and right align labels, but scope to media queries so that
     // labels on narrow viewports stack the same as a default form example.
     @media (min-width: @screen-sm-min) {
-        .@{prefixName}-control-label {
+        .control-label {
             text-align: right;
             margin-bottom: 0;
             padding-top: (@padding-base-vertical + 1); // Default padding plus a border
@@ -590,7 +590,7 @@ input[type="checkbox"] {
     //
     // Reposition the icon because it's now within a grid column and columns have
     // `position: relative;` on them. Also accounts for the grid gutter padding.
-    .@{prefixName}-has-feedback .@{prefixName}-form-control-feedback {
+    .has-feedback .form-control-feedback {
         right: floor((@grid-gutter-width / 2));
     }
 
@@ -598,21 +598,51 @@ input[type="checkbox"] {
     //
     // Quick utility class for applying `.input-lg` and `.input-sm` styles to the
     // inputs and labels within a `.form-group`.
-    .@{prefixName}-form-group-lg {
+    .form-group-lg {
         @media (min-width: @screen-sm-min) {
-            .@{prefixName}-control-label {
+            .control-label {
                 padding-top: ((@padding-large-vertical * @line-height-large) + 1);
                 font-size: @font-size-large;
             }
         }
     }
-    .@{prefixName}-form-group-sm {
+    .form-group-sm {
         @media (min-width: @screen-sm-min) {
-            .@{prefixName}-control-label {
+            .control-label {
                 padding-top: (@padding-small-vertical + 1);
                 font-size: @font-size-small;
             }
         }
+    }
+}
+
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm-13,
+.col-sm-14,
+.col-sm-15,
+.col-sm-16,
+.col-sm-17,
+.col-sm-18,
+.col-sm-19,
+.col-sm-20,
+.col-sm-21,
+.col-sm-22,
+.col-sm-23,
+.col-sm-24,
+{
+    .form-control, .control-label {
+        width: 100%;
     }
 }
 

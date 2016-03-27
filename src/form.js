@@ -3,22 +3,31 @@ import FormControl from './form-control.js';
 
 class Form extends Component {
     static propTypes = {
-        prefixName: React.PropTypes.string,
         formData: React.PropTypes.object,
         onSubmit: React.PropTypes.func,
         onChange: React.PropTypes.oneOfType([
            React.PropTypes.func,
            React.PropTypes.bool
         ]),
-        myStyle: React.PropTypes.string
+        myStyle: React.PropTypes.oneOf([
+            '',
+            'inline',
+            'horizontal'
+        ]),
+        grid: React.PropTypes.oneOfType([
+            React.PropTypes.array,
+            React.PropTypes.number
+        ]),
+        autoCheck: React.PropTypes.bool
     }
 
     static defaultProps = {
-        prefixName: 'salt',
         formData: {},
         onSubmit: () => console.log('请定义onSubmit函数'),
         onChange: false,
-        myStyle: ''
+        myStyle: '',
+        grid: 1,
+        autoCheck: false
     }
 
     constructor(props) {
@@ -45,7 +54,8 @@ class Form extends Component {
         formData[name] = value;
         formValidate[name] = validate;
         this.setState({
-            formData: formData
+            formData: formData,
+            selfCheck: false
         });
         this.props.onChange && this.props.onChange(name, value);
     }
@@ -60,6 +70,10 @@ class Form extends Component {
                 result.push({...formValidate[name], name: name});
             }
         }
+
+        this.setState({
+            selfCheck: true
+        });
 
         return result.length === 0 ? true : result;
     }
@@ -78,22 +92,24 @@ class Form extends Component {
     // 提交
     onSubmit(e) {
         e.preventDefault();
-        console.log(this.onValidate());
         this.props.onSubmit(this.getData());
     }
 
     render() {
         let self = this;
-        let { children, prefixName, formData, myStyle } = this.props;
+        let { children, formData, myStyle, autoCheck } = this.props;
+        let { formValidate, selfCheck } = this.state;
 
         return (
             <form className={`form-${myStyle}`}>
                 {
                     React.Children.map(children, (child) => {
                         return React.cloneElement(child, {
-                            prefixName: prefixName,
                             formData: formData,
-                            onChange: self.handleChange
+                            onChange: self.handleChange,
+                            formValidate: formValidate,
+                            autoCheck: autoCheck,
+                            selfCheck: selfCheck
                         });
                     })
                 }
