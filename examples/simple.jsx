@@ -56,7 +56,7 @@ export default class Demo extends Component {
                     <label className="control-label">名字</label>
                     <Text password />
                 </FormControl>
-                <FormControl name="type" show={(value) => value !== '2'} listen='name' className={(data)=>{}}>
+                <FormControl name="type" show={(value) => value !== '2'} listen='name'>
                     <label className="control-label">性别</label>
                     <Select options={{1: '男', 2: '女', 3: 'all'}}/>
                     <Tips show={true}>这里是一个提示1</Tips>

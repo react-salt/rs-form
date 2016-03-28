@@ -97,11 +97,18 @@ class Form extends Component {
 
     render() {
         let self = this;
-        let { children, formData, myStyle, autoCheck } = this.props;
+        let { children, formData, myStyle, autoCheck, grid } = this.props;
         let { formValidate, selfCheck } = this.state;
+        let gridClass = '';
+        let controlClass = '';
+        if (grid !== 1) {
+            gridClass = "container-fluid";
+            controlClass = `col-sm-${24/grid}`;
+        }
+
 
         return (
-            <form className={`form-${myStyle}`}>
+            <form className={`form-${myStyle} ${gridClass}`}>
                 {
                     React.Children.map(children, (child) => {
                         return React.cloneElement(child, {
@@ -109,7 +116,8 @@ class Form extends Component {
                             onChange: self.handleChange,
                             formValidate: formValidate,
                             autoCheck: autoCheck,
-                            selfCheck: selfCheck
+                            selfCheck: selfCheck,
+                            className: controlClass
                         });
                     })
                 }

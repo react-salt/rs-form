@@ -17,14 +17,16 @@ export default class FormControl extends Component {
             React.PropTypes.func,
             React.PropTypes.bool
         ]),
-        grid: React.PropTypes.array
+        grid: React.PropTypes.array,
+        className: React.PropTypes.string
     }
 
     static defaultProps = {
         name: '',
         show: true,
         disabled: false,
-        grid: [4, 20]
+        grid: [4, 20],
+        className: ''
     }
 
     constructor(props) {
@@ -41,14 +43,14 @@ export default class FormControl extends Component {
 
     render() {
         let self = this;
-        let { children, formData, name, show, disabled, grid, autoCheck, selfCheck, formValidate } = this.props;
+        let { children, formData, name, show, disabled, grid, autoCheck, selfCheck, formValidate, className } = this.props;
         let value = formData[name];
         let ifShow = typeof show === 'boolean' ? show : show(value);
         let ifDisabled = typeof disabled === 'boolean' ? disabled : disabled(value);
         
         let validate = formValidate[name]; // 本条的验证结果
 
-        let classNames = 'form-group has-feedback ';
+        let classNames = `form-group has-feedback ${className} `;
         let checkStatus = false;
         if ((autoCheck || selfCheck) && (this.props.required || this.props.validate)) {
             if (validate === true) {
